@@ -1,0 +1,53 @@
+html {
+    font-size: 1rem;
+  }
+  
+  @include media-breakpoint-up(sm) {
+    html {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @include media-breakpoint-up(md) {
+    html {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @include media-breakpoint-up(lg) {
+    html {
+      font-size: 1.6rem;
+    }
+  }
+.kalma{
+ font-family :Verdana, Geneva, Tahoma, sans-serif;
+margin-top : 60%;
+text-align: center;
+
+}
+body{
+    background-color: #f1f4f6;
+}
+.log{
+    background-color:lawngreen;
+    border: 1px solid red;
+    margin-top:5%;
+    width: 20%;
+    height:40%;
+  }
+#infoSesion{
+    text-align: center;
+}
+
+.btn{
+    width: 60%;
+}
+.signUp{
+    margin-top: 5%;
+    text-align: right;
+}
+a{
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 7.3%;
+}
