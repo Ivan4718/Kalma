@@ -6,11 +6,72 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="contacto.css">
+    <!--     <link rel="stylesheet" href="contacto.css">
+ -->
     <link rel="stylesheet" href="../footer/footer.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script type="text/javascript" src="../js/index.js"></script>
+
+    <script type="text/javascript">
+
+        function checkemail() {
+            const email = document.getElementById("emailContacto");
+            const padre = document.getElementById("correo");
+            let lableBorrar;
+            console.log(email.getAttribute('class'));
+            if (email.getAttribute('class').includes('is-valid') || email.getAttribute('class').includes('is-invalid')) {
+                lableBorrar = document.getElementById('labelMsg');
+                padre.removeChild(lableBorrar);
+            }
+            if ((/[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,4}/).test(email.value)) {
 
 
+                const labelCorrecto = document.createElement('label');
+                const forLabel = document.createAttribute('for');
+                forLabel.value = 'mensajeCorrecto';
+                const classLabel = document.createAttribute('class');
+                classLabel.value = 'text-success visible';
+                const idLabel = document.createAttribute('id');
+                idLabel.value = 'labelMsg';
+                const textLabel = document.createTextNode("Email Valido");
+                labelCorrecto.setAttributeNode(forLabel);
+                labelCorrecto.setAttributeNode(classLabel);
+                labelCorrecto.setAttributeNode(idLabel);
+
+                labelCorrecto.appendChild(textLabel);
+
+                let classInput = email.getAttribute('class');
+                classInput = 'form-control is-valid';
+                console.log(classInput);
+                email.setAttribute('class', classInput);
+                email.parentNode.appendChild(labelCorrecto);
+
+            } else {
+
+                const labelIncorrecto = document.createElement('label');
+                const forLabelDanger = document.createAttribute('for');
+                forLabelDanger.value = 'mensajeInCorrecto';
+                const classLabelDanger = document.createAttribute('class');
+                classLabelDanger.value = 'text-danger visible';
+                const idLabelDanger = document.createAttribute('id');
+                idLabelDanger.value = 'labelMsg';
+                const textLabelDanger = document.createTextNode("Email Invalido");
+                labelIncorrecto.setAttributeNode(forLabelDanger);
+                labelIncorrecto.setAttributeNode(classLabelDanger);
+                labelIncorrecto.setAttributeNode(idLabelDanger);
+                labelIncorrecto.appendChild(textLabelDanger);
+
+                let classInput = email.getAttribute('class');
+                classInput = 'form-control is-invalid';
+                console.log(classInput);
+                email.setAttribute('class', classInput);
+                email.parentNode.appendChild(labelIncorrecto);
+
+
+            }
+        }
+
+    </script>
 </head>
 <header>
     <div class="container-fluid" id="cabecera">
@@ -88,29 +149,30 @@
         <div class="row justify-content-lg-center mt-5">
             <h3>Informacion de contacto</h3>
         </div>
-        
+
         <div class="container" id="formulario">
             <div class="row justify-content-lg-center">
-                <div class="col-5">
-                     <label for="emailContactoLabel">Correo Electronico</label>
-                     <input type="email" class="form-control" id="emailContacto" placeholder="correo@gmail.com">
+                <div class="col-5" id="correo">
+                    <label for="emailContactoLabel">Correo Electronico</label>
+                    <input type="email" class="form-control" id="emailContacto" placeholder="correo@gmail.com"
+                        onblur="checkemail()">
                 </div>
             </div>
             <div class="row justify-content-lg-center">
                 <div class="col-5 mt-3">
-                     <label for="tlfContactoLabel">Numero de Telefono</label>
-                     <input type="number" class="form-control" id="tlfContacto">
+                    <label for="tlfContactoLabel">Numero de Telefono</label>
+                    <input type="number" class="form-control" id="tlfContacto" onblur=checktlf>
                 </div>
             </div>
             <div class="row justify-content-lg-center">
                 <div class="col-5 mt-3">
-                     <label for="obsContactoLabel">Observaciones</label>
-                     <textarea type="text" class="form-control" id="obsContacto" rows="6"></textarea>
+                    <label for="obsContactoLabel">Observaciones</label>
+                    <textarea type="text" class="form-control" id="obsContacto" rows="6"></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="col-2 offset-6 mt-3">
-                    <button type="submit" class="btn btn-primary" id="btnContacto">Enviar</button>
+                    <button type="submit" class="btn btn-primary" id="btnContacto" onsubmit=checkall>Enviar</button>
                 </div>
             </div>
         </div>
@@ -128,4 +190,5 @@
         </div>
     </div>
 </footer>
+
 </html>
